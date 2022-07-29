@@ -5,6 +5,7 @@ import datetime
 from google.oauth2 import service_account
 import yfinance as yf
 import json
+from hist_data import Historical_Extract
 
 # Explicitly setting up environment variable by proving path which has service account details for the project.
 # You have to create service account .json file by clicking on Navigation menu --> IAM and Admin --> Service Account -->
@@ -32,16 +33,14 @@ topic_path = 'projects/regal-unfolding-357209/topics/mypubsub01'
 data = si.get_live_price("MSFT")
 
 # Adding Stock name, Stock Code, Stock price and time into the data which will be sent to topic.
-data = {"c1":"x1",
-"c2":"x2",
-"c3":"x3",
-"c4":"x4"}
-data = json.dumps(data).encode('utf-8')
-# data = "Microsoft Corporation" + ",MSTF," + str(data) + "," + str(datetime.datetime.now())
-print(data)
-# data = data.encode("utf-8")
-# print(data)
-# Sending the data to topic.
-future = publisher.publish(topic_path, data=data)
+stock_data = Historical_Extract('AMZN')
+for data in stock_data:
+    data = json.dumps(data).encode('utf-8')
+    # data = "Microsoft Corporation" + ",MSTF," + str(data) + "," + str(datetime.datetime.now())
+    print(data)
+    # data = data.encode("utf-8")
+    # print(data)
+    # Sending the data to topic.
+    future = publisher.publish(topic_path, data=data)
 
-print(future.result())
+    print(future.result())
