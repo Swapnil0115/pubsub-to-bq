@@ -61,7 +61,7 @@ def Historical_Extract(Company_name):
     action.click(on_element = Time_Period_click)
     action.perform()
 
-    Max_Data = driver.find_element_by_xpath('//*[@id="dropdown-menu"]/div/ul[2]/li[3]/button')
+    Max_Data = driver.find_element_by_xpath('//*[@id="dropdown-menu"]/div/ul[2]/li[2]/button')
     action = ActionChains(driver)
     action.click(on_element = Max_Data)
     action.perform()

@@ -18,7 +18,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="D:\L&T\Gladiator_Project\\regal-un
 project_id = "regal-unfolding-357209"
 
 # Topic name. You can create topic from console or from CLI.
-topic_name = "mypubsub01"
+topic_name = "mypubsub"
 
 # TO display the environment variable. You may ignore it.
 # print('Credentials from environ: {}'.format(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')))
@@ -27,7 +27,7 @@ topic_name = "mypubsub01"
 publisher = pubsub_v1.PublisherClient()
 
 # The `topic_path` method creates a fully qualified identifier in the form `projects/{project_id}/topics/{topic_name}`
-topic_path = 'projects/regal-unfolding-357209/topics/mypubsub01'
+topic_path = 'projects/regal-unfolding-357209/topics/mypubsub'
 
 # Getting Microsoft Corporation live stock rate from Yahoo Finance.
 data = si.get_live_price("MSFT")
